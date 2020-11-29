@@ -38,8 +38,13 @@ def show():
 	l2.pack()
 	e2 = Entry(frame)
 	e2.pack()
+	enter1=e1.get()
+	enter2=e2.get()
 	btn = Button(frame,text="correct",height=1,width=10,activebackground="black",activeforeground="white")
 	btn.pack()
 	root.mainloop()
+
+
+
 
 
