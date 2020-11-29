@@ -11,7 +11,7 @@ def db_conn():
 
 def window():
 	root = Tk()
-	f = Frame(root,height=200,width=300)
+	f = Frame(root,height=60,width=300)
 	f.propagate(0)
 	f.pack()
 	
