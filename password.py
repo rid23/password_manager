@@ -11,10 +11,9 @@ def db_conn():
 
 def window():
 	root = Tk()
-	f = Frame(root,height=60,width=300)
+	f = Frame(root,height=110,width=300)
 	f.propagate(0)
 	f.pack()
-	
 	return f,root
 
 def db_insert(idd,nm,pwd):
@@ -27,12 +26,20 @@ def db_insert(idd,nm,pwd):
 	con.close()
 	print("Upload Complete Bro")
 
-frame,root= window()
-root.title()
-E = Entry(frame)
-E.pack()
-btn = Button(frame,text="correct",height=1,width=10,activebackground="black",activeforeground="white")
-btn.pack()
-root.mainloop()
+
+def show():
+	frame,root= window()
+	root.title()
+	l = Label(frame,text="User")
+	l.pack()
+	e1 = Entry(frame)
+	e1.pack()
+	l2 = Label(frame,text="Password")
+	l2.pack()
+	e2 = Entry(frame)
+	e2.pack()
+	btn = Button(frame,text="correct",height=1,width=10,activebackground="black",activeforeground="white")
+	btn.pack()
+	root.mainloop()
 
 
