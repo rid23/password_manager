@@ -27,24 +27,16 @@ def db_insert(idd,nm,pwd):
 	print("Upload Complete Bro")
 
 
-def show():
-	frame,root= window()
-	root.title()
-	l = Label(frame,text="User")
-	l.pack()
-	e1 = Entry(frame)
-	e1.pack()
-	l2 = Label(frame,text="Password")
-	l2.pack()
-	e2 = Entry(frame)
-	e2.pack()
-	enter1=e1.get()
-	enter2=e2.get()
-	btn = Button(frame,text="correct",height=1,width=10,activebackground="black",activeforeground="white")
-	btn.pack()
-	root.mainloop()
 
+def click():
+	string = "SELECT id FROM pass"
+	con,cur = db_conn()
+	cur.execute(string)
+	#Items from the id column of pass table
+	itm=cur.fetchall()
+	con.commit()
+	cur.close()
+	con.close()
+	db_insert(int(itm[-1][0])+1,str(e1.get()),str(e2.get()))
 
-
-
-
+frame,win = window()
