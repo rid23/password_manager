@@ -46,33 +46,11 @@ def idd():
 	itm = cur.fetchall()
 	cur.close()
 	con.close()
-<<<<<<< HEAD
-	print("Upload Complete Bro")
-
-
-def show():
-
-	frame,root= window()
-	root.title()
-	l = Label(frame,text="User")
-	l.pack()
-	e1 = Entry(frame)
-	e1.pack()
-	l2 = Label(frame,text="Password")
-	l2.pack()
-	e2 = Entry(frame)
-	e2.pack()
-	enter1=e1.get()
-	enter2=e2.get()
-	btn = Button(frame,text="correct",height=1,width=10,activebackground="black",activeforeground="white")
-	btn.pack(padx=0,pady=5)
-	root.mainloop()
-=======
 	idd = int(itm[-1][0])+1
 	return idd
 
 
-
+	
 frame,win = window()
 
 #creating the label,entry,button widgets
@@ -96,11 +74,10 @@ win.mainloop()
 
 
 
->>>>>>> firstb
 
 
 
-show()
+
 
 
 
