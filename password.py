@@ -11,7 +11,8 @@ def db_conn():
 
 def window():
 	root = Tk()
-	f = Frame(root,height=110,width=300)
+	file1 = "C:\\Users\\USER\\Desktop\\py1.jpg"
+	f = Frame(root,height=115,width=300)
 	f.propagate(0)
 	f.pack()
 	return f,root
@@ -28,6 +29,7 @@ def db_insert(idd,nm,pwd):
 
 
 def show():
+
 	frame,root= window()
 	root.title()
 	l = Label(frame,text="User")
@@ -41,10 +43,12 @@ def show():
 	enter1=e1.get()
 	enter2=e2.get()
 	btn = Button(frame,text="correct",height=1,width=10,activebackground="black",activeforeground="white")
-	btn.pack()
+	btn.pack(padx=0,pady=5)
 	root.mainloop()
 
 
+
+show()
 
 
 
