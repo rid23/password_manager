@@ -33,11 +33,19 @@ def db_insert(idd,nm,pwd):
 
 def click(event):
 	global enter1,enter2
-	enter1=str(e1.get())
-	enter2=str(e2.get())
-	print(enter1)
-	print(enter2)
-	db_insert(idd(),enter1,enter2)
+	# for blank entry in user name and password
+	root_36 = Tk()
+	if enter1.get() =='':
+		Label(root_36,text="you dumb!! we don't except your blank request",fg='red').pack()
+	elif enter2.get() == '':
+		Label(root_36,text='enter your password!!!!',fg='red')
+	
+	else:
+		enter1=str(e1.get())
+		enter2=str(e2.get())
+		print(enter1)
+		print(enter2)
+		db_insert(idd(),enter1,enter2)
 
 
 def idd():
