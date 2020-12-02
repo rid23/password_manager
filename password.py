@@ -4,7 +4,11 @@ from mysql.connector import Error
 
 
 def db_conn():
-	conn = mysql.connector.connect(user='root',database='ridb',host='localhost',password='riddhi1234')
+	#storing password in the text file pass.txt
+	with open("C:\\Users\\USER\\Desktop\\password_manager\\pass.txt") as f:
+		pwd = f.read()
+	#establishing connection eith the mysql
+	conn = mysql.connector.connect(user='root',database='ridb',host='localhost',password='pwd')
 	cursor = conn.cursor()
 	return conn,cursor
 
@@ -34,18 +38,20 @@ def db_insert(idd,nm,pwd):
 def click(event):
 	global enter1,enter2
 	# for blank entry in user name and password
-	root_36 = Tk()
-	if enter1.get() =='':
-		Label(root_36,text="you dumb!! we don't except your blank request",fg='red').pack()
-	elif enter2.get() == '':
-		Label(root_36,text='enter your password!!!!',fg='red')
-	
+	enter1=str(e1.get())
+	enter2=str(e2.get())
+	fr,root=window()
+	if enter1 =='':
+		l1 = Label(fr,text="you dumb!! we don't except your blank request").pack()
+	elif enter2 == '':
+		l2 = Label(fr,text="enter your password!!!!").pack()
+	elif enter1 and enter2 == '':
+		print("type in user name or password")	
 	else:
-		enter1=str(e1.get())
-		enter2=str(e2.get())
 		print(enter1)
 		print(enter2)
 		db_insert(idd(),enter1,enter2)
+
 
 
 def idd():
