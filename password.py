@@ -3,12 +3,14 @@ import mysql.connector
 from mysql.connector import Error
 
 
-def db_conn():
-	#storing password in the text file pass.txt
-	with open("C:\\Users\\USER\\Desktop\\password_manager\\pass.txt") as f:
-		pwd = f.read()
+#storing password in the text file pass.txt
+with open("C:\\Users\\USER\\Desktop\\password_manager\\pass.txt") as f:
+	pwd = str(f.readline())
+
+
+def db_conn(pwd):
 	#establishing connection eith the mysql
-	conn = mysql.connector.connect(user='root',database='ridb',host='localhost',password='pwd')
+	conn = mysql.connector.connect(user='root',database='ridb',host='localhost',password=pwd)
 	cursor = conn.cursor()
 	return conn,cursor
 
@@ -40,13 +42,15 @@ def click(event):
 	# for blank entry in user name and password
 	enter1=str(e1.get())
 	enter2=str(e2.get())
-	fr,root=window()
-	if enter1 =='':
-		l1 = Label(fr,text="you dumb!! we don't except your blank request").pack()
-	elif enter2 == '':
-		l2 = Label(fr,text="enter your password!!!!").pack()
-	elif enter1 and enter2 == '':
+	if enter1 and enter2 == '':
+		fr,root=window()
 		print("type in user name or password")	
+	elif enter1 =='':
+		fr,root=window()
+		l1 = Label(fr,text="You left your username blank bro").pack()
+	elif enter2 == '':
+		fr,root=window()
+		l2 = Label(fr,text="enter your password!!!!").pack()
 	else:
 		print(enter1)
 		print(enter2)
@@ -55,7 +59,7 @@ def click(event):
 
 
 def idd():
-	con,cur=db_conn()
+	con,cur=db_conn(pwd)
 	cur.execute("SELECT id FROM pass")
 	itm = cur.fetchall()
 	cur.close()
